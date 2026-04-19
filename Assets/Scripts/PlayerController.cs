@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,10 +8,10 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-
     public InputActionAsset actions;
     public Camera playerCamera;
     public Transform arm;
+    public TextMeshProUGUI dialogText;
     public float mouseSpeed = 1;
     public Vector2 lookLimits = new Vector2(-60, 60);
     public float walkSpeed = 2;
@@ -17,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 2;
     public float jumpAngle = 45;
     public float maxInteractDistance = 1.5f;
+    public float dialogRecordTtl = 3;
+    public AnimationCurve textTransparencyCurve;
 
     InputAction lookAction;
     InputAction moveAction;
@@ -28,6 +32,13 @@ public class PlayerController : MonoBehaviour
     bool canJump;
     float JumpVelocity => Mathf.Sqrt(2 * Physics.gravity.magnitude * jumpHeight);
     Transform ThingInArm = null;
+    struct DialogRecord
+    {
+        public float spawnTime;
+        public string writer;
+        public string text;
+    }
+    LinkedList<DialogRecord> dialogRecords = new();
 
     void Start()
     {
@@ -67,6 +78,21 @@ public class PlayerController : MonoBehaviour
                 Put();
             }
         }
+
+        while (dialogRecords.Count > 0 && Time.time - dialogRecords.First.Value.spawnTime > dialogRecordTtl || dialogRecords.Count > 10)
+            dialogRecords.RemoveFirst();
+
+        string dialogString = "";
+        foreach (var record in dialogRecords)
+        {
+            float transparencyValue = textTransparencyCurve.Evaluate((Time.time - record.spawnTime) / dialogRecordTtl);
+            string hexValue = ((int)(transparencyValue * 255)).ToString("X2");
+            dialogString +=
+                record.writer == null ?
+                $"<color=\"red\"><alpha=#{hexValue}>{record.text}\n" :
+                $"<color=\"green\"><alpha=#{hexValue}>{record.writer}: <color=\"blue\"><alpha=#{hexValue}>{record.text}\n";
+        }
+        dialogText.text = dialogString;
     }
 
     void FixedUpdate()
@@ -114,5 +140,14 @@ public class PlayerController : MonoBehaviour
         thing.transform.parent = arm;
         thing.transform.localPosition = Vector3.zero;
         thing.transform.localRotation = Quaternion.identity;
+    }
+
+    public void Say(string text, string writer = null)
+    {
+        dialogRecords.AddLast(new DialogRecord{
+            spawnTime = Time.time,
+            writer = writer,
+            text = text,
+        });
     }
 }
