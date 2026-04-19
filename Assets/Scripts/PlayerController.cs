@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody rigidBody;
     bool canJump;
     float JumpVelocity => Mathf.Sqrt(2 * Physics.gravity.magnitude * jumpHeight);
-    Rigidbody ThingInArm = null;
+    Transform ThingInArm = null;
 
     void Start()
     {
@@ -53,12 +53,18 @@ public class PlayerController : MonoBehaviour
 
         if (interactAction.WasPressedThisFrame())
         {
-            RaycastHit hitInfo;
-            if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hitInfo, maxInteractDistance))
+            if (ThingInArm == null) {
+                RaycastHit hitInfo;
+                if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hitInfo, maxInteractDistance))
+                {
+                    Interactinator interactinator;
+                    if (hitInfo.collider.TryGetComponent(out interactinator))
+                        interactinator.Interact(this);
+                }
+            }
+            else
             {
-                Interactinator interactinator;
-                if (hitInfo.collider.TryGetComponent<Interactinator>(out interactinator))
-                    interactinator.Interact(this);
+                Put();
             }
         }
     }
@@ -89,5 +95,24 @@ public class PlayerController : MonoBehaviour
         foreach (var contact in collision.contacts)
             if (Vector3.Dot(contact.normal, Vector3.up) > Mathf.Cos(jumpAngle * Mathf.Deg2Rad))
                 canJump = true;
+    }
+
+    public void Put()
+    {
+        Rigidbody body = ThingInArm.AddComponent<Rigidbody>();
+        body.constraints = RigidbodyConstraints.FreezeRotation;
+        ThingInArm.transform.parent = null;
+        ThingInArm = null;
+    }
+
+    public void Take(Transform thing)
+    {
+        ThingInArm = thing;
+        Rigidbody body;
+        if (thing.TryGetComponent(out body))
+            Destroy(body);
+        thing.transform.parent = arm;
+        thing.transform.localPosition = Vector3.zero;
+        thing.transform.localRotation = Quaternion.identity;
     }
 }
