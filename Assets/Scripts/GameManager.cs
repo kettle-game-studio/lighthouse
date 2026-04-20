@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
         player.CallPhone(Phone.State.Signal2, 2);
         yield return new WaitForSeconds(2.0f);
         player.CallPhone(Phone.State.Message, 0);
-        player.Say(GetString("brother_message"), deadushka.tooltip);
+        player.Say(GetString("brother_message"), "Brother");
         state = State.Signal2;
     }
 
