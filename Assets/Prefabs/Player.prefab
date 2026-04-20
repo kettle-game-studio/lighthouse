@@ -250,6 +250,9 @@ GameObject:
   - component: {fileID: 6212767522914136118}
   - component: {fileID: 3021709149873380378}
   - component: {fileID: 6260847268655091616}
+  - component: {fileID: 1065013414338446248}
+  - component: {fileID: 9075205263908569165}
+  - component: {fileID: 8180706701519527572}
   m_Layer: 0
   m_Name: Phone
   m_TagString: Untagged
@@ -330,6 +333,54 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &1065013414338446248
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3514700566973195938}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26e92e8698a3fa64ca145daf8a6de2ae, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9075205263908569165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3514700566973195938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d94c92d99f3528642ae84019599ad92a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SetTexture
+  texture: {fileID: 2800000, guid: 19fb0a045d17b944a880a018defc248e, type: 3}
+  materialIndex: 1
+--- !u!114 &8180706701519527572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3514700566973195938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d003b74a887e8940b52a3c6283886f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Phone
 --- !u!1 &4195285183340440266
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,6 +518,7 @@ MonoBehaviour:
   arm: {fileID: 284473128924376212}
   dialogText: {fileID: 1839655503883792097}
   animationController: {fileID: 4777428205932430508}
+  phone: {fileID: 8180706701519527572}
   mouseSpeed: 0.4
   lookLimits: {x: -80, y: 80}
   walkSpeed: 2

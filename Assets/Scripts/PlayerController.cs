@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public Transform arm;
     public TextMeshProUGUI dialogText;
     public Animator animationController;
+    public Phone phone;
     public float mouseSpeed = 1;
     public Vector2 lookLimits = new Vector2(-60, 60);
     public float walkSpeed = 2;

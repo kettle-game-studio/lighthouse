@@ -4,6 +4,7 @@ using UnityEngine;
 public class SetTexture : MonoBehaviour
 {
     public Texture texture;
+    public int materialIndex = 0;
     Renderer targetRenderer;
     Texture lastTexture = null;
 
@@ -16,7 +17,7 @@ public class SetTexture : MonoBehaviour
     {
         if (texture != lastTexture)
         {
-            targetRenderer.material.mainTexture = texture;
+            targetRenderer.materials[materialIndex].mainTexture = texture;
             lastTexture = texture;
         }
     }
