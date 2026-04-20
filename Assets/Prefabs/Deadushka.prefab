@@ -146,6 +146,9 @@ MonoBehaviour:
   noClips:
   - {fileID: 8300000, guid: 6925c41a454ae3949b3904a7f0ae85e2, type: 3}
   - {fileID: 8300000, guid: 8f5ed1b0464c5cd44ac96f06779ce162, type: 3}
+  somethingClips:
+  - {fileID: 8300000, guid: 595e1daefdbc06f41aa0ebc9071571ef, type: 3}
+  - {fileID: 8300000, guid: a3e9212f28b390b4abaeca83b677a7ef, type: 3}
 --- !u!136 &5609826016947209183
 CapsuleCollider:
   m_ObjectHideFlags: 0

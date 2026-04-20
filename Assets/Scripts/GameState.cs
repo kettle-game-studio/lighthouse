@@ -17,6 +17,7 @@ public class GameState : MonoBehaviour
         "plank",
         "cellar door",
         "garage door",
+        "garden gate",
     };
 
     public List<string> listToUnlock = new();
@@ -60,6 +61,11 @@ public class GameState : MonoBehaviour
             { "garage door_request", "Dedushka, what is the garage door code? I want to look inside" },
             { "garage door_response", "I'm sorry, Vnuchek, but I don't remember. We should wait for your Babushka." },
             { "garage door_comment", "All right then, keep your secrets" },
+
+            { "garden gate_lock", "I think, I should not go OUTSIDE alone, Better check with Dedushka" },
+            { "garden gate_request", "Can I go outside?" },
+            { "garden gate_response", "No no no, Vnuchek, it's dangerous outside" },
+            { "garden gate_comment", "It's very forbidden, apparently" },
 
             { "game_manager_deadushka_podval", "Go to podvall" },
             { "game_manager_brother_message", "Go to garadge" },

@@ -10,6 +10,7 @@ public class Deadushka : Interactinator
     public AudioClip smokeClip;
     public AudioClip[] yesClips;
     public AudioClip[] noClips;
+    public AudioClip[] somethingClips;
     Animator animator;
     float nextBlink = 0;
     float nextSmoke = 0;
@@ -36,7 +37,7 @@ public class Deadushka : Interactinator
 
     private AudioClip randomClip(AudioClip[] clips)
     {
-        return clips[UnityEngine.Random.Range(0, clips.Length-1)];
+        return clips[UnityEngine.Random.Range(0, clips.Length)];
     }
     protected override void Action(PlayerController player)
     {
@@ -54,6 +55,8 @@ public class Deadushka : Interactinator
 
         if (!saySomething)
         {
+            audioSource.clip = randomClip(somethingClips);
+            audioSource.Play();
             player.Say("Say something", "You");
             player.Say("Nothing to say", tooltip);
         }
