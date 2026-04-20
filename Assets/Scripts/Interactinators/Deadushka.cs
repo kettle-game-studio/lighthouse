@@ -3,6 +3,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class Deadushka : Interactinator
 {
     [Serializable]
@@ -14,12 +15,16 @@ public class Deadushka : Interactinator
     }
 
     public unlockTarget[] unlockTargets;
-    bool[] unlockRequests;
-
     public TextMeshPro text;
+    bool[] unlockRequests;
+    Animator animator;
+    float nextBlink = 0;
+    float nextSmoke = 0;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
+
         unlockRequests = new bool[unlockTargets.Length];
         for (int i = 0; i < unlockTargets.Length; ++i)
         {
@@ -28,8 +33,23 @@ public class Deadushka : Interactinator
         }
     }
 
+    void Update()
+    {
+        if (Time.time > nextSmoke)
+        {
+            nextSmoke = Time.time + UnityEngine.Random.Range(10, 30);
+            animator.SetTrigger("Smoke");
+        }
+        if (Time.time > nextBlink)
+        {
+            nextBlink = Time.time + UnityEngine.Random.Range(0.5f, 5);
+            animator.SetTrigger("Blink");
+        }
+    }
+
     protected override void Action(PlayerController player)
     {
+        animator.SetTrigger("Speak");
         bool saySomething = false;
         for (int i = 0; i < unlockRequests.Length; ++i)
         {
