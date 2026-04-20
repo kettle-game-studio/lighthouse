@@ -56,7 +56,7 @@ public class GameState : MonoBehaviour
             { "cellar door_request", "Hi Ded, can I descend down to the underground?" },
             { "cellar door_response", "What for, Vnuchek? You'd better play here, on the surface" },
             { "cellar door_comment", "Well, I guess today I'm not visiting cellar" },
-            
+
             { "garage door_lock", "What terrible old secrets are hidden behind this code lock? We might never know" },
             { "garage door_request", "Dedushka, what is the garage door code? I want to look inside" },
             { "garage door_response", "I'm sorry, Vnuchek, but I don't remember. We should wait for your Babushka." },
@@ -67,8 +67,9 @@ public class GameState : MonoBehaviour
             { "garden gate_response", "No no no, Vnuchek, it's dangerous outside" },
             { "garden gate_comment", "It's very forbidden, apparently" },
 
-            { "game_manager_deadushka_podval", "Go to podvall" },
-            { "game_manager_brother_message", "Go to garadge" },
+            { "game_manager_vnuchek_start", "Ok, I can just put stool on the table and try jumping a little bit higher" },
+            { "game_manager_deadushka_podval", "Vnuchok! Why did you climb so high! You shall better go play in the cellar, maybe there is something interesting there" },
+            { "game_manager_brother_message", "Hi, little bro! I've sent you a funny video in the MMS. Signal in the countryside must be bad. I send you a pin code for the garage, though (it's very secret, don't tell Babushka)" },
         };
     }
 
