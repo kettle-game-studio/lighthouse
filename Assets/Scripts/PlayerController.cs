@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public float maxInteractDistance = 1.5f;
     public float dialogRecordTtl = 3;
     public AnimationCurve textTransparencyCurve;
+    public AudioClip[] phoneSounds;
 
     InputAction lookAction;
     InputAction moveAction;
@@ -176,5 +177,13 @@ public class PlayerController : MonoBehaviour
             writer = writer,
             text = text,
         });
+    }
+
+    public void CallPhone(Phone.State state, int audioIndex = -1, bool loop = false)
+    {
+        if (ThingInArm != null)
+            Put();
+        animationController.SetBool("ShowPhone", true);
+        phone.SetState(state, audioIndex, loop);
     }
 }

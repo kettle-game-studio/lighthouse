@@ -12,6 +12,8 @@ public class Phone : MonoBehaviour
         Message = 4,
         Rickroll = 5,
     }
+    public AudioSource source;
+    public AudioClip[] sounds;
 
     Animator animator;
 
@@ -20,8 +22,14 @@ public class Phone : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void SetState(State state)
+    public void SetState(State state, int audioIndex = -1, bool loop = false)
     {
+        if (audioIndex >= 0)
+        {
+            source.loop = loop;
+            source.clip = sounds[audioIndex];
+            source.Play();
+        }
         animator.SetInteger("State", (int)state);
     }
 }
