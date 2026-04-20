@@ -401,6 +401,23 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afaf5b19af7594eec9a21556c562f2b6, type: 3}
+--- !u!1 &83124355 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5098089167972414565, guid: 7b985e727d6ae2e4db2da5014d340859, type: 3}
+  m_PrefabInstance: {fileID: 971549121}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &83124356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83124355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a4e880471c10694cb4607f6bd5fad4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameState
 --- !u!4 &89014619 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4558244737044017693, guid: afaf5b19af7594eec9a21556c562f2b6, type: 3}
@@ -6639,10 +6656,17 @@ PrefabInstance:
       propertyPath: far clip plane
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 7195283539347360257, guid: 7b985e727d6ae2e4db2da5014d340859, type: 3}
+      propertyPath: gameState
+      value: 
+      objectReference: {fileID: 83124356}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5098089167972414565, guid: 7b985e727d6ae2e4db2da5014d340859, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 83124356}
   m_SourcePrefab: {fileID: 100100000, guid: 7b985e727d6ae2e4db2da5014d340859, type: 3}
 --- !u!114 &978765127 stripped
 MonoBehaviour:

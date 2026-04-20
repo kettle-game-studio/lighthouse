@@ -9,9 +9,9 @@ public class Deadushka : Interactinator
     [Serializable]
     public struct unlockTarget
     {
-        public string title;
         public Interactinator target;
-        public string comment;
+        public string request;
+        public string response;
     }
 
     public unlockTarget[] unlockTargets;
@@ -55,8 +55,8 @@ public class Deadushka : Interactinator
         {
             if (unlockRequests[i])
             {
-                player.Say($"Can I exterminate {unlockTargets[i].title}?", "You");
-                player.Say(unlockTargets[i].comment, "Deadushka");
+                player.Say(player.gameState.GetString(unlockTargets[i].request), "You");
+                player.Say(player.gameState.GetString(unlockTargets[i].response), "Deadushka");
                 unlockTargets[i].target.locked = false;
                 unlockRequests[i] = false;
                 saySomething = true;

@@ -135,6 +135,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Comment
   locked: 1
-  lockText: I have to ask grandpa if I can take it. I don't thinkhe loves Lenin this
-    much
-  comment: Shoot, he does love Lenin this much
+  lockText: lenin_lock
+  comment: lenin_comment
