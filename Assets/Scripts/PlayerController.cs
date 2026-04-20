@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public Transform arm;
     public TextMeshProUGUI dialogText;
     public TextMeshProUGUI tooltipText;
+    public TextMeshProUGUI heightTip;
     public Animator animationController;
     public Phone phone;
     public GameState gameState;
@@ -45,13 +47,14 @@ public class PlayerController : MonoBehaviour
         public string text;
     }
     LinkedList<DialogRecord> dialogRecords = new();
+    InputActionMap playerInputMap;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
 
         rigidBody = GetComponent<Rigidbody>();
-        InputActionMap playerInputMap = actions.FindActionMap("Player");
+        playerInputMap = actions.FindActionMap("Player");
         playerInputMap.Enable();
         lookAction = playerInputMap.FindAction("Look");
         moveAction = playerInputMap.FindAction("Move");
@@ -63,6 +66,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        heightTip.text = $"{(transform.position.y - 0.3f).ToString("F1")}m";
+
         Vector2 lookValue = lookAction.ReadValue<Vector2>();
         lookValue = lookValue * mouseSpeed;
         verticalLookAngle = Mathf.Clamp(verticalLookAngle + lookValue.y, lookLimits.x, lookLimits.y);
@@ -185,5 +190,24 @@ public class PlayerController : MonoBehaviour
             Put();
         animationController.SetBool("ShowPhone", true);
         phone.SetState(state, audioIndex, loop);
+    }
+
+    public void LockInput(float atTime)
+    {
+        StartCoroutine(LockInputCoroutine(atTime));
+    }
+
+    IEnumerator LockInputCoroutine(float atTime)
+    {
+        moveAction.Disable();
+        jumpAction.Disable();
+        attackAction.Disable();
+        interactAction.Disable();
+        yield return new WaitForSeconds(atTime);
+        moveAction.Enable();
+        jumpAction.Enable();
+        attackAction.Enable();
+        interactAction.Enable();
+        playerInputMap.Enable();
     }
 }

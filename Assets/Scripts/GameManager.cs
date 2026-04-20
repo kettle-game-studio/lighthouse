@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(StartGame());
     }
 
     void Update()
@@ -58,6 +59,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    IEnumerator StartGame()
+    {
+        yield return new WaitForSeconds(1.0f);
+        player.CallPhone(Phone.State.Signal0, 5);
+        player.LockInput(2.0f);
+        yield return new WaitForSeconds(2.0f);
+        player.Say(GetString("vnuchek_start"));
+    }
+
     IEnumerator ToState1()
     {
         player.CallPhone(Phone.State.Signal1, 1);
@@ -85,6 +95,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         player.CallPhone(Phone.State.Message, 0);
         yield return new WaitForSeconds(1.0f);
+        player.LockInput(65536.0f);
         player.CallPhone(Phone.State.Rickroll, 4, true);
         state = State.Signal3;
     }
