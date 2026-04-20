@@ -306,6 +306,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f98c2e06f4a336573a30eb04392dd287, type: 3}
+--- !u!114 &32360417 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1674890012376838379, guid: ec380cddf83b12c4ba387ff242a73dcd, type: 3}
+  m_PrefabInstance: {fileID: 397565907}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea06a5d7e5da2d41abaf4dbeff6f1be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Deadushka
 --- !u!1001 &39521401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -476,6 +487,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameState
   listToUnlock: []
+--- !u!114 &83124358 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7195283539347360257, guid: 7b985e727d6ae2e4db2da5014d340859, type: 3}
+  m_PrefabInstance: {fileID: 971549121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83124355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d086eb1c7640a1b4ca77a3c618b0a8aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+--- !u!114 &83124362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83124355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 044ee126cd4e79a43b7c7f56d85a138d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  gameState: {fileID: 83124356}
+  player: {fileID: 83124358}
+  deadushka: {fileID: 32360417}
+  stateHeight:
+  - 5
+  - 7
+  - 9
+  - 10
+  state: 0
 --- !u!4 &89014619 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4558244737044017693, guid: afaf5b19af7594eec9a21556c562f2b6, type: 3}
@@ -7636,6 +7679,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -10.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1241600623248003102, guid: 7b985e727d6ae2e4db2da5014d340859, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -503.99994
+      objectReference: {fileID: 0}
     - target: {fileID: 2236449583570520482, guid: 7b985e727d6ae2e4db2da5014d340859, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.74067
@@ -7695,6 +7742,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5098089167972414565, guid: 7b985e727d6ae2e4db2da5014d340859, type: 3}
       insertIndex: -1
       addedObject: {fileID: 83124356}
+    - targetCorrespondingSourceObject: {fileID: 5098089167972414565, guid: 7b985e727d6ae2e4db2da5014d340859, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 83124362}
   m_SourcePrefab: {fileID: 100100000, guid: 7b985e727d6ae2e4db2da5014d340859, type: 3}
 --- !u!114 &978765127 stripped
 MonoBehaviour:
