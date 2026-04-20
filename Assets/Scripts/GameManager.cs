@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(StartGame());
     }
 
     void Update()
@@ -56,6 +57,13 @@ public class GameManager : MonoBehaviour
             case State.Signal1: yield return ToState2(); break;
             case State.Signal2: yield return ToState3(); break;
         }
+    }
+
+    IEnumerator StartGame()
+    {
+        yield return new WaitForSeconds(1.0f);
+        player.CallPhone(Phone.State.Signal0, 5);
+        yield return new WaitForSeconds(2.0f);
     }
 
     IEnumerator ToState1()
