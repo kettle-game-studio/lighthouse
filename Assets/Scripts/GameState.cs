@@ -66,6 +66,9 @@ public class GameState : MonoBehaviour
             { "garden gate_request", "Can I go outside?" },
             { "garden gate_response", "No no no, Vnuchek, it's dangerous outside" },
             { "garden gate_comment", "It's very forbidden, apparently" },
+
+            { "game_manager_deadushka_podval", "Go to podvall" },
+            { "game_manager_brother_message", "Go to garadge" },
         };
     }
 
