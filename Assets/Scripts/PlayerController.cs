@@ -116,8 +116,8 @@ public class PlayerController : MonoBehaviour
             string hexValue = ((int)(transparencyValue * 255)).ToString("X2");
             dialogString +=
                 record.writer == null ?
-                $"<color=\"red\"><alpha=#{hexValue}>{record.text}\n" :
-                $"<color=\"green\"><alpha=#{hexValue}>{record.writer}: <color=\"blue\"><alpha=#{hexValue}>{record.text}\n";
+                $"<color=#949494><alpha=#{hexValue}>{record.text}\n" :
+                $"<color=#852421><alpha=#{hexValue}>{record.writer}: <color=#949494><alpha=#{hexValue}>{record.text}\n";
         }
         dialogText.text = dialogString;
     }

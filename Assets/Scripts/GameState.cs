@@ -34,7 +34,7 @@ public class GameState : MonoBehaviour
             // { "can_lock", "" },
             // { "detective novel_lock", "" },
 
-            { "icon_lock", "Hm, Babushka's icon of Holy Mother. I must ask Dedushka before preceding." },
+            { "icon_lock", "Hm, Babushka's icon of Holy Mother. I must ask Dedushka before proceeding." },
             { "icon_request", "Hi, Dedushka! I am thinking about using Icon of Holy Mother, is this ok?" },
             { "icon_response", "Of course, Vnuchek, enjoy yourself!" },
 
