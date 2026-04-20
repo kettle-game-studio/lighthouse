@@ -7,13 +7,15 @@ using UnityEngine;
 public class Deadushka : Interactinator
 {
     public TextMeshPro text;
+    public AudioClip smokeClip;
     Animator animator;
     float nextBlink = 0;
     float nextSmoke = 0;
-
+    AudioSource audioSource;
     void Start()
     {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -47,6 +49,11 @@ public class Deadushka : Interactinator
             player.Say("Say something", "You");
             player.Say("Nothing to say", "Deadushka");
         }
+    }
 
+    public void StartSmoke(AnimationEvent ev)
+    {
+        audioSource.clip = smokeClip;
+        audioSource.Play();
     }
 }
