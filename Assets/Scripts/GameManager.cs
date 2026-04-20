@@ -7,7 +7,11 @@ public class GameManager : MonoBehaviour
     public PlayerController player;
     public Deadushka deadushka;
     public float[] stateHeight = {5, 7, 9, 10, 65536};
+    public Door[] cellarDoors;
+    public Door[] garageDoors;
+
     string tooltip = "game_manager";
+
 
     public enum State
     {
@@ -57,8 +61,10 @@ public class GameManager : MonoBehaviour
     IEnumerator ToState1()
     {
         player.CallPhone(Phone.State.Signal1, 1);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
         player.Say(GetString("deadushka_podval"), deadushka.tooltip);
+        foreach (var door in cellarDoors)
+            door.UnlockSecondFactor();
         state = State.Signal1;
     }
 
@@ -68,6 +74,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         player.CallPhone(Phone.State.Message, 0);
         player.Say(GetString("brother_message"), "Brother");
+        foreach (var door in garageDoors)
+            door.UnlockSecondFactor();
         state = State.Signal2;
     }
 
