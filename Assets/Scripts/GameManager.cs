@@ -7,13 +7,14 @@ public class GameManager : MonoBehaviour
     public PlayerController player;
     public Deadushka deadushka;
     public float[] stateHeight = {5, 7, 9, 10, 65536};
+    string tooltip = "game_manager";
+
     public enum State
     {
         Signal0 = 0,
         Signal1,
         Signal2,
         Signal3,
-        Endgame,
         TranslateState
     }
     public State state = State.Signal0;
@@ -50,7 +51,6 @@ public class GameManager : MonoBehaviour
             case State.Signal0: yield return ToState1(); break;
             case State.Signal1: yield return ToState2(); break;
             case State.Signal2: yield return ToState3(); break;
-            case State.Signal3: yield return ToEndgame(); break;
         }
     }
 
@@ -58,27 +58,31 @@ public class GameManager : MonoBehaviour
     {
         player.CallPhone(Phone.State.Signal1, 1);
         yield return new WaitForSeconds(0.5f);
+        player.Say(GetString("deadushka_podval"), deadushka.tooltip);
         state = State.Signal1;
     }
 
     IEnumerator ToState2()
     {
         player.CallPhone(Phone.State.Signal2, 2);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2.0f);
+        player.CallPhone(Phone.State.Message, 0);
+        player.Say(GetString("brother_message"), deadushka.tooltip);
         state = State.Signal2;
     }
 
     IEnumerator ToState3()
     {
         player.CallPhone(Phone.State.Signal3, 3);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2.0f);
+        player.CallPhone(Phone.State.Message, 0);
+        yield return new WaitForSeconds(1.0f);
+        player.CallPhone(Phone.State.Rickroll, 4, true);
         state = State.Signal3;
     }
 
-    IEnumerator ToEndgame()
+    string GetString(string key)
     {
-        player.CallPhone(Phone.State.Rickroll, 4, true);
-        yield return new WaitForSeconds(0.5f);
-        state = State.Endgame;
+        return gameState.GetString($"{tooltip}_{key}");
     }
 }

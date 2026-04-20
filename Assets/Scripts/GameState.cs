@@ -60,6 +60,8 @@ public class GameState : MonoBehaviour
             { "garage door_request", "Dedushka, what is the garage door code? I want to look inside" },
             { "garage door_response", "I'm sorry, Vnuchek, but I don't remember. We should wait for your Babushka." },
             { "garage door_comment", "All right then, keep your secrets" },
+
+            { "game_manager_deadushka_message", "Go to podvall" }
         };
     }
 

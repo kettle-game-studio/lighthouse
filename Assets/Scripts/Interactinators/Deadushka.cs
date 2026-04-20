@@ -48,14 +48,14 @@ public class Deadushka : Interactinator
             audioSource.clip = randomClip(player.gameState.HasString($"{tooltip}_comment") ? noClips:yesClips);
             audioSource.Play();
             player.Say(player.gameState.GetString($"{tooltip}_request"), "You");
-            player.Say(player.gameState.GetString($"{tooltip}_response"), "Deadushka");
+            player.Say(player.gameState.GetString($"{tooltip}_response"), tooltip);
             saySomething = true;
         }
 
         if (!saySomething)
         {
             player.Say("Say something", "You");
-            player.Say("Nothing to say", "Deadushka");
+            player.Say("Nothing to say", tooltip);
         }
     }
 
