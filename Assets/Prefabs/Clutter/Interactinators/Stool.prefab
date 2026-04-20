@@ -119,8 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 279d071819bd0e6449abae0d41d9fb00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Takablinator
+  tooltip: Stool
   locked: 0
-  lockText: 
 --- !u!54 &4077880084085606843
 Rigidbody:
   m_ObjectHideFlags: 0

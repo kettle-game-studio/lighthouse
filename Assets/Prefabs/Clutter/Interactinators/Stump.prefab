@@ -198,8 +198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 279d071819bd0e6449abae0d41d9fb00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Takablinator
-  locked: 0
-  lockText: 
+  tooltip: Stump
+  locked: 1
 --- !u!54 &3101660855800532448
 Rigidbody:
   m_ObjectHideFlags: 0

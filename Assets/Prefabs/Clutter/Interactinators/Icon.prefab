@@ -92,8 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 279d071819bd0e6449abae0d41d9fb00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Takablinator
-  locked: 0
-  lockText: 
+  tooltip: Icon
+  locked: 1
 --- !u!1 &7060093890541940132 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5292603194174199359, guid: 8c121e5e7960f1f42b472303329b7852, type: 3}
