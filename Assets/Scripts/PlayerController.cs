@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public Camera playerCamera;
     public Transform arm;
     public TextMeshProUGUI dialogText;
+    public TextMeshProUGUI tooltipText;
     public Animator animationController;
     public Phone phone;
     public float mouseSpeed = 1;
@@ -69,6 +70,18 @@ public class PlayerController : MonoBehaviour
         bool shownPhone = animationController.GetBool("ShowPhone");
         bool phoneButton = attackAction.WasPressedThisFrame();
         bool armButton = interactAction.WasPressedThisFrame();
+
+        tooltipText.text = "";
+        Interactinator interactinator = null;
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out var hitInfo, maxInteractDistance))
+        {
+            interactinator = hitInfo.collider.GetComponentInParent<Interactinator>();
+            if (interactinator != null && ThingInArm == null)
+            {
+                tooltipText.text = $"[E] {interactinator.tooltip}";
+            }
+        }
+
         if (armButton)
         {
             if (ThingInArm != null)
@@ -77,12 +90,9 @@ public class PlayerController : MonoBehaviour
                 animationController.SetBool("ShowPhone", false);
             else
             {
-                RaycastHit hitInfo;
-                if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hitInfo, maxInteractDistance))
+                if (interactinator != null)
                 {
-                    var interactinator = hitInfo.collider.GetComponentInParent<Interactinator>();
-                    if (interactinator != null)
-                        interactinator.Interact(this);
+                    interactinator.Interact(this);
                 }
             }
         }
@@ -159,7 +169,8 @@ public class PlayerController : MonoBehaviour
 
     public void Say(string text, string writer = null)
     {
-        dialogRecords.AddLast(new DialogRecord{
+        dialogRecords.AddLast(new DialogRecord
+        {
             spawnTime = Time.time,
             writer = writer,
             text = text,

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Interactinator : MonoBehaviour
 {
+    public string tooltip = "";
     public bool locked = false;
     public string lockText = "";
     public Action<PlayerController> unlockRequest = null;
