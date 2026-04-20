@@ -80,8 +80,8 @@ public class PlayerController : MonoBehaviour
                 RaycastHit hitInfo;
                 if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hitInfo, maxInteractDistance))
                 {
-                    Interactinator interactinator;
-                    if (hitInfo.collider.TryGetComponent(out interactinator))
+                    var interactinator = hitInfo.collider.GetComponentInParent<Interactinator>();
+                    if (interactinator != null)
                         interactinator.Interact(this);
                 }
             }
