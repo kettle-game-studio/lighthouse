@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public float jumpAngle = 45;
     public float maxInteractDistance = 1.5f;
     public float dialogRecordTtl = 3;
+    public float dialogRecordWriteTime = 0.5f;
     public AnimationCurve textTransparencyCurve;
     public AudioClip[] phoneSounds;
 
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour
     bool canJump;
     float JumpVelocity => Mathf.Sqrt(2 * Physics.gravity.magnitude * jumpHeight);
     Transform ThingInArm = null;
-    struct DialogRecord
+    class DialogRecord
     {
         public float spawnTime;
         public string writer;
@@ -115,14 +116,30 @@ public class PlayerController : MonoBehaviour
             dialogRecords.RemoveFirst();
 
         string dialogString = "";
+        bool prevRecordWritten = true;
         foreach (var record in dialogRecords)
         {
+            if (prevRecordWritten && record.spawnTime < 0)
+                record.spawnTime = Time.time;
+            if (record.spawnTime < 0)
+                break;
+            float deltaTime = Time.time - record.spawnTime;
+            bool recordWritten = deltaTime > dialogRecordWriteTime;
+            string text = record.text;
+            if (!recordWritten)
+            {
+                int sliceIndex = (int)(text.Length * deltaTime / dialogRecordWriteTime);
+                text = $"{text.Substring(0, sliceIndex)}<alpha=#00>{text.Substring(sliceIndex)}";
+            }
+
             float transparencyValue = textTransparencyCurve.Evaluate((Time.time - record.spawnTime) / dialogRecordTtl);
             string hexValue = ((int)(transparencyValue * 255)).ToString("X2");
             dialogString +=
                 record.writer == null ?
-                $"<color=#949494><alpha=#{hexValue}>{record.text}\n" :
-                $"<color=#852421><alpha=#{hexValue}>{record.writer}: <color=#949494><alpha=#{hexValue}>{record.text}\n";
+                $"<color=#949494><alpha=#{hexValue}>{text}\n" :
+                $"<color=#852421><alpha=#{hexValue}>{record.writer}: <color=#949494><alpha=#{hexValue}>{text}\n";
+
+            prevRecordWritten = recordWritten;
         }
         dialogText.text = dialogString;
     }
@@ -178,7 +195,7 @@ public class PlayerController : MonoBehaviour
     {
         dialogRecords.AddLast(new DialogRecord
         {
-            spawnTime = Time.time,
+            spawnTime = -1,
             writer = writer,
             text = text,
         });
@@ -211,3 +228,4 @@ public class PlayerController : MonoBehaviour
         playerInputMap.Enable();
     }
 }
+
