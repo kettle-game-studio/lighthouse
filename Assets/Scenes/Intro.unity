@@ -870,11 +870,11 @@ MonoBehaviour:
   text: {fileID: 918045885}
   image: {fileID: 114130405}
   sprites:
-  - {fileID: 21300000, guid: 9075b5af3f85d12f3815bd619feb9e13, type: 3}
-  - {fileID: 21300000, guid: 2d44a2114cc58e903b54575c2d53719b, type: 3}
-  - {fileID: 21300000, guid: 6faf85af5079d11b886082edab1019ed, type: 3}
-  - {fileID: 21300000, guid: 4dfd323ea09dbdebf909d502ff9d7967, type: 3}
-  idx: 0
+  - {fileID: 21300000, guid: 28c3b60b1aae4622ca7d04076806e921, type: 3}
+  - {fileID: 21300000, guid: 6ca45ceab38843c68a140cc1e8afb4ba, type: 3}
+  - {fileID: 21300000, guid: b560c5f2bd621e7ee84f039fceefb5d0, type: 3}
+  - {fileID: 21300000, guid: 2cf4af2c8be73cc2aa96b225d5155508, type: 3}
+  - {fileID: 21300000, guid: aca91c094d000c7afbd49aeae4e3c548, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour
     public float dialogRecordTtl = 3;
     public AnimationCurve textTransparencyCurve;
     public AudioClip[] phoneSounds;
+    public AudioClip walk;
+    public AudioClip jump;
+    public AudioSource walkSource;
+    public AudioSource jumpSource;
 
     InputAction lookAction;
     InputAction moveAction;
@@ -62,6 +66,9 @@ public class PlayerController : MonoBehaviour
         sprintAction = playerInputMap.FindAction("Sprint");
         attackAction = playerInputMap.FindAction("Attack");
         interactAction = playerInputMap.FindAction("Interact");
+
+        walkSource.clip = walk;
+        jumpSource.clip = jump;
     }
 
     void Update()
@@ -137,12 +144,26 @@ public class PlayerController : MonoBehaviour
         Vector2 moveValue = moveAction.ReadValue<Vector2>();
         moveValue *= speed;
 
+        if (moveValue.magnitude > 0.5 && canJump)
+        {
+            if (!walkSource.isPlaying)
+                walkSource.Play();
+        }
+        else
+        {
+            walkSource.Stop();
+        }
+        walkSource.pitch = sprintAction.IsPressed() ? 2f : 1f;
+
         Vector3 forwardVector = transform.rotation * Vector3.forward;
         Vector3 rightVector = transform.rotation * Vector3.right;
         resultVelocity += forwardVector * moveValue.y + rightVector * moveValue.x;
 
         if (canJump && jumpAction.IsPressed())
+        {
             resultVelocity.y = JumpVelocity;
+            jumpSource.Play();
+        }
 
         rigidBody.linearVelocity = resultVelocity;
         canJump = false;
@@ -152,7 +173,9 @@ public class PlayerController : MonoBehaviour
     {
         foreach (var contact in collision.contacts)
             if (Vector3.Dot(contact.normal, Vector3.up) > Mathf.Cos(jumpAngle * Mathf.Deg2Rad))
+            {
                 canJump = true;
+            }
     }
 
     public void Put()

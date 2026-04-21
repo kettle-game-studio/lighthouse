@@ -27,6 +27,8 @@ public class IntroManager : MonoBehaviour
         jumpAction = playerInputMap.FindAction("Jump");
         attackAction = playerInputMap.FindAction("Attack");
         interactAction = playerInputMap.FindAction("Interact");
+
+        image.sprite = sprites[idx];
     }
 
     void Update()
@@ -38,14 +40,15 @@ public class IntroManager : MonoBehaviour
 
         if (armButton || phoneButton || jumpAction.WasPressedThisFrame())
         {
-            Debug.Log("Click");
             idx += 1;
+
+            text.text = "Press [E] for next page";
             if (idx >= sprites.Length)
             {
                 SceneManager.LoadScene("Game", LoadSceneMode.Single);
             }
 
-            else if (idx == sprites.Length - 2)
+            else if (idx >= sprites.Length - 1)
             {
                 text.text = "Press [E] to start game";
             }
