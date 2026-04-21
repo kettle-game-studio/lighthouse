@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
         while (dialogRecords.Count > 10 ||
                 dialogRecords.Count > 0 &&
                 dialogRecords.First.Value.spawnTime > 0 &&
-                Time.time - dialogRecords.First.Value.spawnTime > dialogRecordTtl
+                Time.time - dialogRecords.First.Value.spawnTime > dialogRecordTtl * dialogRecords.First.Value.text.Length
             )
             dialogRecords.RemoveFirst();
 
@@ -128,15 +128,15 @@ public class PlayerController : MonoBehaviour
             if (record.spawnTime < 0)
                 break;
             float deltaTime = Time.time - record.spawnTime;
-            bool recordWritten = deltaTime > dialogRecordWriteTime;
             string text = record.text;
+            bool recordWritten = deltaTime > text.Length * dialogRecordWriteTime;
             if (!recordWritten)
             {
-                int sliceIndex = (int)(text.Length * deltaTime / dialogRecordWriteTime);
+                int sliceIndex = (int)(deltaTime / dialogRecordWriteTime);
                 text = $"{text.Substring(0, sliceIndex)}<alpha=#00>{text.Substring(sliceIndex)}";
             }
 
-            float transparencyValue = textTransparencyCurve.Evaluate((Time.time - record.spawnTime) / dialogRecordTtl);
+            float transparencyValue = textTransparencyCurve.Evaluate(deltaTime / (dialogRecordTtl * record.text.Length));
             string hexValue = ((int)(transparencyValue * 255)).ToString("X2");
             dialogString +=
                 record.writer == null ?
