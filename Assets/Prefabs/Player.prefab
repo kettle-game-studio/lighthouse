@@ -1205,7 +1205,8 @@ MonoBehaviour:
   jumpHeight: 1.5
   jumpAngle: 70
   maxInteractDistance: 2
-  dialogRecordTtl: 8
+  dialogRecordTtl: 0.1
+  dialogRecordWriteTime: 0.01
   textTransparencyCurve:
     serializedVersion: 2
     m_Curve:
@@ -1219,22 +1220,22 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.14228189
     - serializedVersion: 3
-      time: 0.35317487
-      value: 0.996652
-      inSlope: -0.048447832
-      outSlope: -0.048447832
+      time: 0.35766223
+      value: 0.9821361
+      inSlope: -0.08504802
+      outSlope: -0.08504802
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.27058443
-      outWeight: 0.33333334
+      outWeight: 0.12881604
     - serializedVersion: 3
       time: 1
       value: 0.0000017285347
-      inSlope: 0.000012502506
-      outSlope: 0.000012502506
+      inSlope: -3.8623514
+      outSlope: -3.8623514
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.13825506
+      inWeight: 0.08315941
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
         player.CallPhone(Phone.State.Signal1, 1);
         yield return new WaitForSeconds(1.0f);
         player.Say(GetString("deadushka_podval"), deadushka.tooltip);
+        deadushka.TakeSound();
         foreach (var door in cellarDoors)
             door.UnlockSecondFactor();
         state = State.Signal1;

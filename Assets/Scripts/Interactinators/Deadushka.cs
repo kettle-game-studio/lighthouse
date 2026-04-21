@@ -49,7 +49,7 @@ public class Deadushka : Interactinator
             audioSource.clip = randomClip(player.gameState.HasString($"{tooltip}_comment") ? noClips:yesClips);
             audioSource.Play();
             player.Say(player.gameState.GetString($"{tooltip}_request"), "You");
-            player.Say(player.gameState.GetString($"{tooltip}_response"), tooltip);
+            player.Say(player.gameState.GetString($"{tooltip}_response"), this.tooltip);
             saySomething = true;
         }
 
@@ -66,6 +66,12 @@ public class Deadushka : Interactinator
     {
         if(audioSource.isPlaying) return;
         audioSource.clip = smokeClip;
+        audioSource.Play();
+    }
+
+    public void TakeSound()
+    {
+        audioSource.clip = randomClip(yesClips);
         audioSource.Play();
     }
 }

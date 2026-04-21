@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public float jumpAngle = 45;
     public float maxInteractDistance = 1.5f;
     public float dialogRecordTtl = 3;
+    public float dialogRecordWriteTime = 0.5f;
     public AnimationCurve textTransparencyCurve;
     public AudioClip[] phoneSounds;
     public AudioClip walk;
@@ -44,7 +45,7 @@ public class PlayerController : MonoBehaviour
     bool canJump;
     float JumpVelocity => Mathf.Sqrt(2 * Physics.gravity.magnitude * jumpHeight);
     Transform ThingInArm = null;
-    struct DialogRecord
+    class DialogRecord
     {
         public float spawnTime;
         public string writer;
@@ -118,18 +119,38 @@ public class PlayerController : MonoBehaviour
                 animationController.SetBool("ShowPhone", !shownPhone);
         }
 
-        while (dialogRecords.Count > 0 && Time.time - dialogRecords.First.Value.spawnTime > dialogRecordTtl || dialogRecords.Count > 10)
+        while (dialogRecords.Count > 10 ||
+                dialogRecords.Count > 0 &&
+                dialogRecords.First.Value.spawnTime > 0 &&
+                Time.time - dialogRecords.First.Value.spawnTime > dialogRecordTtl * dialogRecords.First.Value.text.Length
+            )
             dialogRecords.RemoveFirst();
 
         string dialogString = "";
+        bool prevRecordWritten = true;
         foreach (var record in dialogRecords)
         {
-            float transparencyValue = textTransparencyCurve.Evaluate((Time.time - record.spawnTime) / dialogRecordTtl);
+            if (prevRecordWritten && record.spawnTime < 0)
+                record.spawnTime = Time.time;
+            if (record.spawnTime < 0)
+                break;
+            float deltaTime = Time.time - record.spawnTime;
+            string text = record.text;
+            bool recordWritten = deltaTime > text.Length * dialogRecordWriteTime;
+            if (!recordWritten)
+            {
+                int sliceIndex = (int)(deltaTime / dialogRecordWriteTime);
+                text = $"{text.Substring(0, sliceIndex)}<alpha=#00>{text.Substring(sliceIndex)}";
+            }
+
+            float transparencyValue = textTransparencyCurve.Evaluate(deltaTime / (dialogRecordTtl * record.text.Length));
             string hexValue = ((int)(transparencyValue * 255)).ToString("X2");
             dialogString +=
                 record.writer == null ?
-                $"<color=#949494><alpha=#{hexValue}>{record.text}\n" :
-                $"<color=#852421><alpha=#{hexValue}>{record.writer}: <color=#949494><alpha=#{hexValue}>{record.text}\n";
+                $"<color=#E0D7B9><alpha=#{hexValue}>{text}\n" :
+                $"<color=#D9D9D9><alpha=#{hexValue}>{record.writer}: <color=#E0D7B9><alpha=#{hexValue}>{text}\n";
+
+            prevRecordWritten = recordWritten;
         }
         dialogText.text = dialogString;
     }
@@ -201,7 +222,7 @@ public class PlayerController : MonoBehaviour
     {
         dialogRecords.AddLast(new DialogRecord
         {
-            spawnTime = Time.time,
+            spawnTime = -1,
             writer = writer,
             text = text,
         });
@@ -234,3 +255,4 @@ public class PlayerController : MonoBehaviour
         playerInputMap.Enable();
     }
 }
+
