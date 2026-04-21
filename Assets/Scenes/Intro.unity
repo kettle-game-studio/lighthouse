@@ -515,7 +515,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press [E] For next slide
+  m_text: Press [E] fOR INTRO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 982e7bf61d5daa368838e0967b49e774, type: 2}
   m_sharedMaterial: {fileID: 1304023163216792263, guid: 982e7bf61d5daa368838e0967b49e774, type: 2}

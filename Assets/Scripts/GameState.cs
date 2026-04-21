@@ -70,6 +70,7 @@ public class GameState : MonoBehaviour
             { "game_manager_vnuchek_start", "Ok, I can just put stool on the table and try jumping a little bit higher" },
             { "game_manager_deadushka_podval", "Vnuchok! Why did you climb so high! You shall better go play in the cellar, maybe there is something interesting there" },
             { "game_manager_brother_message", "Hi, little bro! I've sent you a funny video in the MMS. Signal in the countryside must be bad. I send you a pin code for the garage, though (it's very secret, don't tell Babushka)" },
+            { "game_manager_brother_message_2", "Hahaha! Wat a funny video, isn't it? That mean you've won the game, by the way. Cool!" },
         };
     }
 

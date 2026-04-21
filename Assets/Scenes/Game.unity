@@ -510,14 +510,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 044ee126cd4e79a43b7c7f56d85a138d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  music: {fileID: 689759289}
   gameState: {fileID: 83124356}
   player: {fileID: 83124358}
   deadushka: {fileID: 32360417}
   stateHeight:
-  - 5
-  - 7
-  - 9
-  - 10
+  - 1
+  - 2
+  - 3
+  - 500
   cellarDoors:
   - {fileID: 996881216}
   - {fileID: 1223682994}
@@ -7467,6 +7468,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f98c2e06f4a336573a30eb04392dd287, type: 3}
+--- !u!114 &689759289 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4076107215901298540, guid: 7b985e727d6ae2e4db2da5014d340859, type: 3}
+  m_PrefabInstance: {fileID: 971549121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8e269bee99253d4b86ed358e0036e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Music
 --- !u!1001 &696533321
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public Music music;
     public GameState gameState;
     public PlayerController player;
     public Deadushka deadushka;
@@ -96,8 +97,13 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         player.CallPhone(Phone.State.Message, 0);
         yield return new WaitForSeconds(1.0f);
-        player.LockInput(65536.0f);
+        music.pause = true;
+        player.Say(GetString("brother_message_2"), "Brother");
+        player.LockInput(10.0f);
         player.CallPhone(Phone.State.Rickroll, 4, true);
+        yield return new WaitForSeconds(10f);
+        player.CallPhone(Phone.State.Signal3, -1, false);
+        music.pause = false;
         state = State.Signal3;
     }
 

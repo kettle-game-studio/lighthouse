@@ -24,9 +24,9 @@ public class Phone : MonoBehaviour
 
     public void SetState(State state, int audioIndex = -1, bool loop = false)
     {
+        source.loop = loop;
         if (audioIndex >= 0)
         {
-            source.loop = loop;
             source.clip = sounds[audioIndex];
             source.Play();
         }

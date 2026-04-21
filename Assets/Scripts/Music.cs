@@ -6,9 +6,16 @@ public class Music : MonoBehaviour
     public AudioSource source;
     private int idx = 0;
 
+    public bool pause = false;
+
 
     void Update()
     {
+        if (pause)
+        {
+            source.Stop();
+        }
+
         if (!source.isPlaying)
         {
             source.clip = musics[idx];
