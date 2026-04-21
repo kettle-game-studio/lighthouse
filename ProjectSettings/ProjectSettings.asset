@@ -302,7 +302,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 05cf4d7a6da04d54383e4d9a2896f4ff, type: 3}
+      m_Icon: {fileID: 2800000, guid: d9d694a0b5cdc04409f68114466620d2, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -536,6 +536,9 @@ PlayerSettings:
   m_BuildTargetBatching:
   - m_BuildTarget: WebGL
     m_StaticBatching: 0
+    m_DynamicBatching: 0
+  - m_BuildTarget: Standalone
+    m_StaticBatching: 1
     m_DynamicBatching: 0
   m_BuildTargetShaderSettings: []
   m_BuildTargetGraphicsJobs: []

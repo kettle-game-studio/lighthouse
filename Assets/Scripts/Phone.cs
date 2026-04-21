@@ -30,6 +30,8 @@ public class Phone : MonoBehaviour
             source.clip = sounds[audioIndex];
             source.Play();
         }
+        else
+            source.Stop();
         animator.SetInteger("State", (int)state);
     }
 }

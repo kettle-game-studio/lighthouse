@@ -88,6 +88,8 @@ public class GameManager : MonoBehaviour
         player.Say(GetString("brother_message"), "Brother");
         foreach (var door in garageDoors)
             door.UnlockSecondFactor();
+        yield return new WaitForSeconds(4.0f);
+        player.CallPhone(Phone.State.Signal2, -1);
         state = State.Signal2;
     }
 
