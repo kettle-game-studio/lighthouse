@@ -12755,6 +12755,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -228.149
       objectReference: {fileID: 0}
+    - target: {fileID: 5145174288600800811, guid: 8b726916b1afff742900e4aad798fadf, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8e1d25c539bf12efc97963dfec98f6f4, type: 2}
+    - target: {fileID: 5145174288600800811, guid: 8b726916b1afff742900e4aad798fadf, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 64396a565e944cb759d918ed4b7c226a, type: 2}
+    - target: {fileID: 5145174288600800811, guid: 8b726916b1afff742900e4aad798fadf, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5276be37e32aa054db322a997709f21a, type: 2}
+    - target: {fileID: 5145174288600800811, guid: 8b726916b1afff742900e4aad798fadf, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 14afbf9feff9784938b08ac260ccc1ce, type: 2}
+    - target: {fileID: 5145174288600800811, guid: 8b726916b1afff742900e4aad798fadf, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 64528f7ac6b24e3bdb9f9a35625119ec, type: 2}
     - target: {fileID: 5228829047915741053, guid: 8b726916b1afff742900e4aad798fadf, type: 3}
       propertyPath: tooltip
       value: Cellar Door
