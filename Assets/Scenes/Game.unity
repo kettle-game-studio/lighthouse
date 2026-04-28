@@ -9726,7 +9726,7 @@ Light:
     m_Strength: 1
     m_Bias: 0.05
     m_NormalBias: 0.4
-    m_NearPlane: 0.2
+    m_NearPlane: 0.1
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
@@ -12823,6 +12823,14 @@ PrefabInstance:
       propertyPath: tooltip
       value: Garage Door
       objectReference: {fileID: 0}
+    - target: {fileID: 6420960694025173402, guid: 8b726916b1afff742900e4aad798fadf, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8e1d25c539bf12efc97963dfec98f6f4, type: 2}
+    - target: {fileID: 6420960694025173402, guid: 8b726916b1afff742900e4aad798fadf, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5c14195b7c2090fb58867a7424daf178, type: 2}
     - target: {fileID: 7962845327809785123, guid: 8b726916b1afff742900e4aad798fadf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.043
